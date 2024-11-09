@@ -15,12 +15,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,include
 
 # mengimport program views sebagai blogViews dari blog app
-from blog import views as blogViews
 
-from contact import views as contactViews
+
+# from contact import views as contactViews
 
 # mengimport program views.py
 from . import views
@@ -30,8 +30,8 @@ urlpatterns = [
     path('',views.home),
     path("about/",views.about),
     path("listAnime/",views.listAnime),
-    path("blog/",blogViews.blog),
-    path("contact/",contactViews.contact),
+    path("blog/",include("blog.urls")),
+    path("contact/",include("contact.urls")),
     
 
 ]
